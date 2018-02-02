@@ -1,3 +1,16 @@
+"""tweet_gatherer.py
+
+  Gathers 1,000 tweets from the last 24 hours from each listed source, and rank them.
+  Tweets with more favorites and especially retweets will be ranked higher.
+
+Usage:
+  tweet_gatherer
+
+Options:
+  -h --help         #  Show this screen
+"""
+
+
 import operator
 from datetime import datetime, timedelta
 
