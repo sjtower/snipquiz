@@ -1,6 +1,7 @@
-import tweepy
 import operator
 from datetime import datetime, timedelta
+
+import tweepy
 
 
 class RankedTweet:
@@ -31,9 +32,12 @@ def main(args=None):
   i = 0
 
   print('\n Here is your daily news roundup: \n')
-  for tweet in reversed(total_tweets[:1000]):
-    i = i + 1
-    print(i, ') ', tweet.screen_name, tweet.text, 'total score:', tweet.total_score, 'created:', tweet.created_date)
+  with open("daily_news_roundup.txt", 'w') as results_file:
+    for tweet in reversed(total_tweets[:1000]):
+      i = i + 1
+      print(i, ') ', tweet.screen_name, tweet.text, 'total score:', tweet.total_score, 'created:', tweet.created_date)
+      results_file.write(
+        '{}) {}: {},created {}\n'.format(i, tweet.screen_name, tweet.text, tweet.total_score, tweet.created_date))
 
 
 def gather_ranked_tweets(res):
